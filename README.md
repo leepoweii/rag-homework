@@ -45,8 +45,11 @@
 git clone https://github.com/leepoweii/rag-homework.git
 cd rag-homework
 
-# 使用 uv 安裝依賴
+# 安裝核心依賴
 uv sync
+
+# 如果需要開發環境（Jupyter notebook 等）
+uv sync --extra dev
 
 # 設置環境變數
 cp .env.example .env
@@ -55,8 +58,11 @@ cp .env.example .env
 
 ### 運行專案
 ```bash
-# 啟動 Jupyter Notebook
+# 如果已安裝開發依賴，啟動 Jupyter Notebook
 uv run jupyter notebook
+
+# 或者直接運行 Jupyter Lab
+uv run jupyter lab
 
 # 打開 酒吧RAG品牌大使.ipynb 並執行
 ```
@@ -119,12 +125,23 @@ class CustomE5Embedding(HuggingFaceEmbeddings):
 ## 依賴套件
 
 根據 `pyproject.toml` 配置：
+
+### 核心依賴
 - Python >= 3.13
 - faiss-cpu >= 1.11.0
 - gradio >= 5.38.0
 - langchain >= 0.3.26
+- langchain-community >= 0.3.27
 - openai >= 1.97.1
-- sentence-transformers >= 5.0.0
+- python-dotenv >= 1.0.0
+- tqdm >= 4.67.1
+
+### 開發依賴 (可選)
+- ipykernel >= 6.30.0
+- jupyter >= 1.1.1
+- notebook >= 7.4.4
+
+使用 `uv sync --extra dev` 安裝完整開發環境。
 
 ## 專案結構
 ```
