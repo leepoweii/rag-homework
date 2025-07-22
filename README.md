@@ -32,7 +32,7 @@
 3. **整合回答**: 根據原始問句，以及步驟二中檢索到的所有相關文件，使用 LLM 整合生成最終的完整回覆。
 
 ### 核心技術
-- **語意拆解**: 自訂 prompt 透過 OpenAI GPT-4 將複合問句拆解成子問題
+- **語意拆解**: 自訂 prompt 透過 OpenAI GPT-4.1 nano 將複合問句拆解成子問題
 - **向量檢索**: 自訂 E5 embedding 類別 + FAISS 向量資料庫
 - **檢索策略**: 使用 top k = 3 讓資料更完整
 - **UI**: Gradio 快速打造 Web App
@@ -61,10 +61,9 @@ cp .env.example .env
 # 如果已安裝開發依賴，啟動 Jupyter Notebook
 uv run jupyter notebook
 
-# 或者直接運行 Jupyter Lab
-uv run jupyter lab
-
 # 打開 酒吧RAG品牌大使.ipynb 並執行
+
+# 或者直接在 VS Code 執行也可以
 ```
 
 ## 使用示範
@@ -134,6 +133,7 @@ class CustomE5Embedding(HuggingFaceEmbeddings):
 - langchain-community >= 0.3.27
 - openai >= 1.97.1
 - python-dotenv >= 1.0.0
+- "sentence-transformers>=5.0.0"
 - tqdm >= 4.67.1
 
 ### 開發依賴 (可選)
@@ -159,7 +159,3 @@ rag-homework/
 2. 優化 chunking 策略
 3. 增加評估機制
 4. 模組化程式碼結構
-
----
-
-*這個專案展現了如何使用 AI 工具解決實際業務需求，從問題發現到解決方案的完整思考過程。*
